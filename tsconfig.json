@@ -1,0 +1,23 @@
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "types": ["react-native", "node", "jest"],
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "paths": {
+      "constants/*": ["constants/*"],
+      "screens/*": ["screens/*"],
+      "components/*": ["components/*"],
+      "services/*": ["services/*"],
+      "theme/*": ["theme/*"],
+      "assets/*": ["assets/*"],
+      "hooks/*": ["hooks/*"],
+      "navigation/*": ["navigation/*"]
+    }
+  },
+  "exclude": ["node_modules", "./*.config.js"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "index.d.ts",]
+}
