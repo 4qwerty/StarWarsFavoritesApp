@@ -1,26 +1,18 @@
 import React from 'react';
-import {
-  Text,
-  View,
-} from 'react-native';
 import {Provider} from "react-redux";
 
 import {PersistGate} from 'redux-persist/integration/react';
-import {persistor, store} from "./services/store";
-
+import {persistor, store} from "services/store";
+import {Navigation} from "navigation/index.tsx";
+import {SafeAreaProvider} from "react-native-safe-area-context";
 
 function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text>StarWarsApp</Text>
-        </View>
+        <SafeAreaProvider>
+          <Navigation/>
+        </SafeAreaProvider>
       </PersistGate>
     </Provider>
   );
