@@ -1,5 +1,5 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
-import {swApi} from "../../api/swapi";
+import {swApi} from "services/api/swapi";
 import {ICharacter} from "types/сharacter.ts";
 
 interface ICharacterSliceState {

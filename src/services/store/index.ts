@@ -3,7 +3,7 @@ import {configureStore, combineReducers, Middleware} from '@reduxjs/toolkit';
 import {persistReducer, persistStore} from 'redux-persist';
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import {setupListeners} from '@reduxjs/toolkit/query/react';
-import { swApi } from "../api/swapi.ts";
+import { swApi } from "services/api/swapi.ts";
 import { characterSlice } from "./slices/сharacter";
 
 export type RootState = ReturnType<typeof store.getState>;
