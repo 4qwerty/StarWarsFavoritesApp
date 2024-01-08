@@ -1,10 +1,10 @@
-import { createStackNavigator } from '@react-navigation/stack';
-import React, { FC } from 'react';
-import { COLORS } from 'theme/colors';
-import { useAppSelector } from 'services/store';
+import {createStackNavigator} from '@react-navigation/stack';
+import React, {FC} from 'react';
+import {COLORS} from 'theme/colors';
 import {RootStackParamList} from "navigation/types.ts";
-import CharacterListScreen from "screens/character-list/character-list.tsx";
-import CharacterDetail from "screens/character-detail/character-detail.tsx";
+import {CharacterListScreen} from "screens/character-list";
+import {CharacterDetailScreen} from "screens/character-detail/character-detail.tsx";
+
 
 export const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -26,20 +26,20 @@ export const RootStackComponent: FC = () => {
         cardStyle: {
           backgroundColor: COLORS.white,
         },
-        headerBackTitle: ('back'),
+        headerBackTitle: ' ',
       }}>
       <RootStack.Screen
         name="CharacterList"
         component={CharacterListScreen}
         options={{
-          title: 'Character List',
+          title: 'Star Wars Characters',
         }}
       />
       <RootStack.Screen
         name="CharacterDetail"
-        component={CharacterDetail}
+        component={CharacterDetailScreen}
         options={{
-          headerShown: false,
+          title: 'Info',
         }}
       />
     </RootStack.Navigator>
