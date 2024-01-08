@@ -1,4 +1,6 @@
+import {ICharacter} from "../types/сharacter.ts";
+
 export type RootStackParamList = {
   CharacterList: undefined;
-  CharacterDetail: undefined;
+  CharacterDetail: { item: ICharacter };
 };

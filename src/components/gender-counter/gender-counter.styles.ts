@@ -14,6 +14,7 @@ export const genderCountDisplayStyles = StyleSheet.create({
     backgroundColor: COLORS.white
   },
   counterText: {
+    color: COLORS.primary,
     textAlign: "center",
     fontFamily: 'Inter',
     fontSize: 14,

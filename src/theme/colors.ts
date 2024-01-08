@@ -12,5 +12,6 @@ export const COLORS = {
   textGrey: '#AAC0D3',
   textWhite: '#EAF6FF',
   textFade: '#A2B3C4',
-  textFadeTransparent: '#18181866',
+  textFadeTransparent: 'rgba(24,24,24,0.67)',
+  link: '#1e90ff'
 };

@@ -7,13 +7,16 @@ import {Icons} from "constants/icons.ts";
 import {COLORS} from "theme/colors.ts";
 import {useFavorites} from "hooks/useFavorites.ts";
 import {ITEMS_PER_PAGE, START_PAGE} from "constants/pagination.ts";
-import { CharacterItem } from "components/character-item";
-import GenderCountDisplay from "../../components/gender-counter/gender-counter.tsx";
+import {CharacterItem} from "components/character-item";
+import {GenderCountDisplay} from "../../components/gender-counter";
+import {NavigationProp, useNavigation} from "@react-navigation/native";
+import {RootStackParamList} from "navigation/types.ts";
 
 export const CharacterListScreen: FC = () => {
   const [currentNumberPage, setCurrentNumberPage] = useState(START_PAGE);
   const [isPageChanging, setIsPageChanging] = useState(false);
   const {data, isLoading} = useGetCharacterListQuery(currentNumberPage);
+  const navigation = useNavigation<NavigationProp<RootStackParamList, 'CharacterDetail'>>();
 
   const totalPages = data?.count ? Math.ceil(data.count / ITEMS_PER_PAGE) : 0;
 
@@ -24,12 +27,6 @@ export const CharacterListScreen: FC = () => {
     }
   }, [totalPages]);
 
-  useEffect(() => {
-    if (!isLoading) {
-      setIsPageChanging(false);
-    }
-  }, [data, isLoading]);
-
   const {
     favourites,
     handleAddToFavourites,
@@ -37,6 +34,25 @@ export const CharacterListScreen: FC = () => {
     resetFavourites,
     genderCount
   } = useFavorites();
+
+  useEffect(() => {
+    if (!isLoading) {
+      setIsPageChanging(false);
+    }
+  }, [data, isLoading]);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => resetFavourites()}
+          style={{margin: 16}}
+        >
+          <Icons.Reset/>
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation, favourites]);
 
   const isFavourite = (url: string) => {
     return [...favourites].some(fav => fav.url === url);
@@ -73,7 +89,7 @@ export const CharacterListScreen: FC = () => {
                 >
                   <Icons.ArrowLeft fill={currentNumberPage === 1 ? COLORS.secondary : COLORS.black}/>
                 </TouchableOpacity>
-                <Text>{currentNumberPage} / {totalPages}</Text>
+                <Text style={characterListStyles.pageNumber}>{currentNumberPage} / {totalPages}</Text>
                 <TouchableOpacity
                   disabled={currentNumberPage === totalPages}
                   onPress={() => handlePageChange(currentNumberPage + 1)}

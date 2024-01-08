@@ -15,5 +15,11 @@ export const characterListStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+  },
+  resetButton: {
+    marginRight: 8
+  },
+  pageNumber: {
+    color: COLORS.primary
   }
 });

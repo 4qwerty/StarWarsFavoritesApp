@@ -3,7 +3,7 @@ import React, {FC} from 'react';
 import {COLORS} from 'theme/colors';
 import {RootStackParamList} from "navigation/types.ts";
 import {CharacterListScreen} from "screens/character-list";
-import {CharacterDetailScreen} from "screens/character-detail/character-detail.tsx";
+import {CharacterDetailScreen} from "screens/character-detail";
 
 
 export const RootStack = createStackNavigator<RootStackParamList>();

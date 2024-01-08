@@ -21,6 +21,7 @@ export const characterItemStyles = StyleSheet.create({
     elevation: 5,
   },
   infoText: {
+    color: COLORS.primary,
     fontFamily: 'Inter',
     fontSize: 14,
     fontStyle: 'normal',

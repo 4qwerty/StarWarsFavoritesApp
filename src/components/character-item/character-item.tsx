@@ -20,7 +20,7 @@ export const CharacterItem: FC<CharacterItemProps> = (
     onAddToFavourites,
     onRemoveFromFavourites
   }) => {
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<NavigationProp<RootStackParamList, 'CharacterDetail'>>();
 
   const handleFavouritePress = () => {
     if (isFavourite) {
@@ -33,7 +33,7 @@ export const CharacterItem: FC<CharacterItemProps> = (
   return (
     <TouchableOpacity
       style={[characterItemStyles.itemCard, characterItemStyles.shadowProp]}
-      onPress={() => navigation.navigate('CharacterDetail')}
+      onPress={() => navigation.navigate('CharacterDetail', {item})}
     >
       <View>
         <Text style={characterItemStyles.infoText}>Name: {item.name}</Text>
