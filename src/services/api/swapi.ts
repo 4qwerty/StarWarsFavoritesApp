@@ -11,10 +11,6 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-const handleUrl = (url: string) => {
-  return new URL(url).pathname + new URL(url).search;
-};
-
 export const swApi = createApi({
   reducerPath: 'swApi',
   baseQuery: async (args, api, extraOptions) => {
@@ -36,14 +32,10 @@ export const swApi = createApi({
     getCharacter: builder.query<ICharacter, string>({
       query: (id) => `people/${id}/`,
     }),
-    getCharacterListByUrl: builder.query<ICharacterResponse, string>({
-      query: (url) => handleUrl(url),
-    }),
   }),
 });
 
 export const {
   useGetCharacterListQuery,
   useGetCharacterQuery,
-  useGetCharacterListByUrlQuery,
 } = swApi;
