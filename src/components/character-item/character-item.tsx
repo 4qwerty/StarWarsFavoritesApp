@@ -1,10 +1,11 @@
 import React, {FC} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Linking} from 'react-native';
 import {ICharacter} from 'types/сharacter.ts';
 import {characterItemStyles} from './character-item.styles.ts';
 import {Icons} from "constants/icons.ts";
 import {NavigationProp, useNavigation} from "@react-navigation/native";
 import {RootStackParamList} from "navigation/types.ts";
+import {characterDetailStyles} from "screens/character-detail/character-detail.styles.ts";
 
 interface CharacterItemProps {
   item: ICharacter,
@@ -39,7 +40,6 @@ export const CharacterItem: FC<CharacterItemProps> = (
         <Text style={characterItemStyles.infoText}>Name: {item.name}</Text>
         <Text style={characterItemStyles.infoText}>Birth year: {item.birth_year}</Text>
         <Text style={characterItemStyles.infoText}>Gender: {item.gender}</Text>
-        <Text style={characterItemStyles.infoText}>Species: {item.species}</Text>
       </View>
 
       <TouchableOpacity
